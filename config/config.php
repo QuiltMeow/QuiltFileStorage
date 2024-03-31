@@ -53,7 +53,7 @@ function startSession($expire = 1200) {
     } else {
         session_start();
         if (isset($_SESSION["verify_fail"]) && $_SESSION["verify_fail"] >= 3) {
-            die(); // 驗證失敗達 3 次
+            die("<meta charset=\"UTF-8\" />錯誤次數達 3 次，暫時限制使用");
         }
         setcookie("PHPSESSID", session_id(), time() + $expire);
     }

@@ -257,6 +257,10 @@ if (!empty($_GET["folder"])) {
                                             } else {
                                                 echo "驗證失敗";
                                                 addVerifyFailCount();
+                                                if ($_SESSION["verify_fail"] >= 3) {
+                                                    echo "，錯誤次數達 3 次，暫時限制使用";
+                                                    die();
+                                                }
                                             }
                                             ?>
                                         </h2>

@@ -54,6 +54,9 @@ if (is_null($row["password"]) || in_array($file, $_SESSION["access_file"])) {
                             $state = "danger";
                             $content = "驗證失敗";
                             addVerifyFailCount();
+                            if ($_SESSION["verify_fail"] >= 3) {
+                                die("錯誤次數達 3 次，暫時限制使用");
+                            }
                         }
                     }
                     ?>
