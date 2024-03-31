@@ -1,0 +1,3 @@
+<files "config.php">
+    deny from all
+</files>
