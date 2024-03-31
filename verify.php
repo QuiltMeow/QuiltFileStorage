@@ -51,12 +51,12 @@ if (is_null($row["password"]) || in_array($file, $_SESSION["access_file"])) {
                             $content = "驗證通過，即將開始下載檔案；如無法自動下載，請點選<a href=\"./download.php?file=" . cleanHTMLSpecialChar($file) . "\">這裡</a>開始下載";
                             pushArrayContainCheck($_SESSION["access_file"], $file);
                         } else {
-                            $state = "danger";
-                            $content = "驗證失敗";
                             addVerifyFailCount();
                             if ($_SESSION["verify_fail"] >= 3) {
                                 die("錯誤次數達 3 次，暫時限制使用");
                             }
+                            $state = "danger";
+                            $content = "驗證失敗";
                         }
                     }
                     ?>
