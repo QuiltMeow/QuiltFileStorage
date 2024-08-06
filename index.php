@@ -130,10 +130,11 @@ if (!empty($_GET["folder"])) {
                                         $res = $con->query("SELECT * FROM `file` WHERE `folder_uuid` = \"$folder\" AND `category_id` = 1");
                                         while ($row = $res->fetch_assoc()) {
                                             $link = cleanHTMLSpecialChar("./download.php?file=" . $row["uuid"]);
+                                            $fileName = cleanHTMLSpecialChar($row["name"]);
                                             ?>
                                             <div class="drive-item module text-center">
                                                 <div class="drive-item-inner module-inner">
-                                                    <div class="drive-item-title"><a href="<?php echo $link; ?>" target="_blank"><?php echo cleanHTMLSpecialChar($row["name"]); ?></a></div>
+                                                    <div class="drive-item-title"><a href="<?php echo $link; ?>" target="_blank" data-toggle="tooltip" data-placement="top" title data-original-title="<?php echo $fileName; ?>"><?php echo $fileName; ?></a></div>
                                                     <div class="drive-item-thumb">
                                                         <a href="<?php echo $link; ?>"><i class="fa fa-file-<?php echo cleanHTMLSpecialChar($row["type"]); ?>-o text-<?php echo cleanHTMLSpecialChar($row["status"]); ?>"></i></a>
                                                     </div>
